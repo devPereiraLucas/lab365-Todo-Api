@@ -1,0 +1,6 @@
+@lab365_Todo_Api_HostAddress = http://localhost:5033
+
+GET {{lab365_Todo_Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
