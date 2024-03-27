@@ -10,7 +10,7 @@ namespace lab365_Todo_Api.Controllers
     public class TodoItemsController : ControllerBase
     {
         [HttpPost]
-        public ActionResult<int> createTodoItem(TodoItemDto todoItemDto)
+        public ActionResult<int> CreateTodoItem(TodoItemDto todoItemDto)
         {
             Random random = new();
             int randomId = random.Next(1, 1000);
@@ -27,7 +27,7 @@ namespace lab365_Todo_Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<bool> updateTodoItem([FromRoute] int id, TodoItemDto todoItemDto)
+        public ActionResult<bool> UpdateTodoItem([FromRoute] int id, TodoItemDto todoItemDto)
         {
             return Ok(true);
         }
