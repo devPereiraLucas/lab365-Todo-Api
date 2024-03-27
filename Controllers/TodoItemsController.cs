@@ -25,5 +25,11 @@ namespace lab365_Todo_Api.Controllers
 
             return Ok(todoItemsModel.Id);
         }
+
+        [HttpPut("{id}")]
+        public ActionResult<bool> updateTodoItem([FromRoute] int id, TodoItemDto todoItemDto)
+        {
+            return Ok(true);
+        }
     }
 }
