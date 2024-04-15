@@ -9,4 +9,12 @@ public class TodoContextDB : DbContext
     }
 
     public DbSet<TodoItemsModel> TodoItemModels { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<TodoItemsModel>()
+            .Property(p => p.CreatedAt)
+            .HasDefaultValueSql("GETDATE()");
+
+        base.OnModelCreating(modelBuilder);
+    }
 }
