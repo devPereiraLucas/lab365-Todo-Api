@@ -16,7 +16,6 @@ public class TodoItemsController : ControllerBase
 
         TodoItemsModel todoItemsModel = new()
         {
-            Id = randomId,
             Name = todoItemDto.Name,
             Active = todoItemDto.Active,
             CreatedAt = DateTime.Now
