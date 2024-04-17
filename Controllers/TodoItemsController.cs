@@ -8,6 +8,13 @@ namespace lab365_Todo_Api.Controllers;
 [ApiController]
 public class TodoItemsController : ControllerBase
 {
+    private readonly TodoContextDB _todoContextDB;
+
+    public TodoItemsController(TodoContextDB todoContextDB)
+    {
+        _todoContextDB = todoContextDB;
+    }
+
     /// <summary>
     ///     Verbo POST - CREATE - Criar um novo registro no Banco de Dados
     /// </summary>
@@ -16,15 +23,15 @@ public class TodoItemsController : ControllerBase
     [HttpPost]
     public ActionResult<int> CreateTodoItem(TodoItemDto todoItemDto)
     {
-        Random random = new();
-        int randomId = random.Next(1, 1000);
-
         TodoItemsModel todoItemsModel = new()
         {
             Name = todoItemDto.Name,
             Active = todoItemDto.Active,
             CreatedAt = DateTime.Now
         };
+
+        _todoContextDB.TodoItemModels.Add(todoItemsModel);
+        _todoContextDB.SaveChanges();
 
         return Ok(todoItemsModel.Id);
     }
