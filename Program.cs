@@ -1,3 +1,6 @@
+using lab365_Todo_Api.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,12 @@ builder.Services.AddRouting(options =>
     options.LowercaseUrls = true;
     options.LowercaseQueryStrings = true;
 });
+
+builder.Services
+    .AddDbContext<TodoContextDB>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DbContextProd"));
+    });
 
 var app = builder.Build();
 
